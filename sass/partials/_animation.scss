@@ -1,0 +1,40 @@
+.m-scene {
+    overflow: hidden;
+    
+    .scene_element {
+        animation-duration: 0.1s;
+        transition-timing-function: ease-in;
+        animation-fill-mode: both;
+    }
+    
+    .scene_element--fadein {
+        animation-name: fadeIn;
+    }
+    
+    .scene_element--fadeinup {
+        animation-name: fadeInUp;
+    }
+    
+    .scene_element--fadeindown {
+        animation-name: fadeInDown;
+    }
+    
+    .scene_element--fadeinright {
+        animation-name: fadeInRight;
+    }
+    
+    .scene_element--grow {
+        animation-name: grow;
+    }
+    
+    .scene_element--grow-fast {
+        animation-name: grow-fast;
+//        animation-duration: 0.4s;
+    }
+    
+    &.is-exiting {
+        .scene_element {
+            animation-direction: alternate-reverse;
+        }
+    }
+}

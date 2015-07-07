@@ -1,0 +1,75 @@
+//- overlay version
+//- .vids.scene_element.scene_element--fadein
+    - var i = 0
+    each array in items
+        a.video(href="#{array[0].link}", data-toggle-overlay="overlay-#{i + 1}")
+            .content    
+                if (i == 0)
+                    img(src="http://contester.digitalmind.ch/wp-content/uploads/2015/06/dm_icon.png" style="display: none;")
+                if (i < 10)
+                    img(src="https://unsplash.it/30#{i++}" style="display: none;")
+                else
+                    img(src="https://unsplash.it/3#{i++}" style="display: none;")
+                if array[0].title
+                    .vid-content
+                        h2.title #{array[0].title}
+        // video end
+// vids end
+
+// contentbox version
+.vids
+    - var i = 0
+    - var p = (pid - 1)
+    each array in items
+        if (i == p)
+            div(class="elem-#{i++}" style="display: none")
+        else
+            if ((p == 1 || p == 2 || p == 3 || p == 4) && (i == 5 || i == 7))
+                a.video(href="#{array[0].link}").scene_element.scene_element--grow
+                    .content
+                        if (i < 10)
+                            img(src="https://unsplash.it/30#{i++}" style="display: none;")
+                        else
+                            img(src="https://unsplash.it/3#{i++}" style="display: none;")
+                        .vid-content
+                            h2.title #{array[0].title}
+                span.video
+                span.video
+            else if ((p == 5 || p == 6) && (i == 4 || i == 7))
+                a.video(href="#{array[0].link}").scene_element.scene_element--grow
+                    .content
+                        if (i < 10)
+                            img(src="https://unsplash.it/30#{i++}" style="display: none;")
+                        else
+                            img(src="https://unsplash.it/3#{i++}" style="display: none;")
+                        .vid-content
+                            h2.title #{array[0].title}
+                span.video
+                span.video
+            else if ( ( p == 7 || p == 8 || p == 9 || p == 10 || p == 11 || p == 12 || p == 13 || p == 14  || p == 15 ) && ( i == 4 || i == 6 ) )
+                a.video(href="#{array[0].link}").scene_element.scene_element--grow
+                    .content
+                        if (i < 10)
+                            img(src="https://unsplash.it/30#{i++}" style="display: none;")
+                        else
+                            img(src="https://unsplash.it/3#{i++}" style="display: none;")
+                        .vid-content
+                            h2.title #{array[0].title}
+                span.video
+                span.video
+            else
+                a.video(href="#{array[0].link}").scene_element.scene_element--grow
+                    .content
+                        if (i < 10)
+                            img(src="https://unsplash.it/50#{i++}" style="display: none;")
+                        else
+                            img(src="https://unsplash.it/5#{i++}" style="display: none;")
+                        .vid-content
+                            h2.title #{array[0].title}
+    .content_wrap.scene_element.scene_element--grow-fast
+        if (p < 10)
+            img(src="https://unsplash.it/50#{p}" style="display: none;")
+        else
+            img(src="https://unsplash.it/5#{p}" style="display: none;")
+        div content
+            a(href="#" data-toggle-overlay="overlay-#{pid}") toggle overlay

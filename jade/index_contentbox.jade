@@ -1,0 +1,38 @@
+- var page = { title: "Playground", subtitle: "Testing Smoothstate", author: "author", description: "description", tags: ["tag1", "tag2", "tag3"] }
+- var items = [[{ link: 'index.html', title: 'Emberson is a beautiful sea' }], [{ link: 'index.html', title: 'Brodyn' }], [{ link: 'index.html', title: 'Chindlr' }], [{ link: 'index.html', title: 'Cayen' }], [{ link: 'index.html', title: 'Mauris' }], [{ link: 'index.html', title: 'Deron' }], [{ link: 'index.html', title: 'Canrad' }], [{ link: 'index.html', title: 'Graesen' }], [{ link: 'index.html', title: 'Cayeden' }], [{ link: 'index.html', title: 'Braddy' }], [{ link: 'index.html', title: 'Abril' }], [{ link: 'index.html', title: 'Jaleah' }], [{ link: 'index.html', title: 'Sofia' }], [{ link: 'index.html', title: 'Emelisa' }], [{ link: 'index.html', title: 'Jexica' }], [{ link: 'index.html', title: 'Ellayina' }]]
+
+doctype html
+html(lang="de")
+    include includes/head.jade
+    
+    body
+        .m-scene#main
+            include includes/header.jade
+            .container
+                .vids
+                    - var i = 0
+                    each array in items
+                        a.video(href="#{array[0].link}").scene_element.scene_element--grow
+                            .content
+                                if (i < 10)
+                                    img(src="https://unsplash.it/30#{i++}" style="display: none;")
+                                else
+                                    img(src="https://unsplash.it/3#{i++}" style="display: none;")
+                                .vid-content
+                                    h2.title #{array[0].title}
+                    .content_wrap.scene_element.scene_element--grow-fast
+                        span content
+                        a(href="#" data-toggle-overlay="overlay-content") toggle overlay
+            
+            .overlay#overlay-content
+                i.fa.fa-close.toggle
+                .container
+                    h1 Lorem Ipsum
+                    p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam autem sit suscipit repudiandae sint tenetur voluptates iste dolor nihil. Sit enim, sed totam voluptates nam eligendi ea vero odio dignissimos provident soluta veniam odit commodi tenetur repellat recusandae harum fugiat rem alias non neque asperiores. Doloribus at blanditiis deserunt, porro, inventore quaerat vero similique ad, ipsam iusto sequi quia qui accusamus. Ullam impedit dolorum rem, asperiores ipsam soluta inventore perferendis libero ex porro debitis corporis labore veniam cum fuga ab!
+                    
+                    p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro nulla et necessitatibus, a. Est, facilis. Harum vel cupiditate aperiam ea temporibus molestias iure, perspiciatis neque nostrum doloremque, reiciendis deserunt tenetur.
+                    
+                    p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem blanditiis culpa eos, nobis amet repellendus assumenda odio vitae exercitationem aperiam facilis, labore qui, soluta perferendis suscipit. Molestias quae magnam est obcaecati sapiente, ab iusto minima quod. Ex tempora molestiae ullam amet itaque eveniet officia aut earum error nostrum laboriosam officiis recusandae nesciunt perspiciatis, eligendi, aspernatur reprehenderit voluptatum quidem possimus vitae reiciendis a neque! Cum, explicabo.
+
+    // body end
+// html end

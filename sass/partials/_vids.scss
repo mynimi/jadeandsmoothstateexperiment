@@ -1,0 +1,46 @@
+.vids {
+    @include flexbox(row, wrap, flex-start, stretch);
+    width: 100%;
+    
+    .video {
+        width: (100% / 4);
+        box-sizing: border-box;
+        padding: 10px;
+    
+        &:hover {
+            cursor: pointer;
+            
+            .vid-content {
+                transform: translateY(50%);
+                opacity: 0;
+            }
+        }
+        
+        .content {
+            overflow: hidden;
+            background: {
+                position: center;
+                size: cover;
+            }
+            @include paddinghack(100%, 1, 1, '.vid-content');
+        }
+        
+        .vid-content {
+            background: transparent;
+            background: linear-gradient(to top, rgba(black, .9) 0%, rgba(black, .2) 30%, transparent 50%);
+            transform: translateY(0);
+            transition: .3s all ease;
+            opacity: 1;
+            
+            .title {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                box-sizing: border-box;
+                padding: 5px;
+                color: white;
+            }
+        }
+    }
+}

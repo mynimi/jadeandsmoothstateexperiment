@@ -1,0 +1,26 @@
+- var page = { title: "Playground", subtitle: "Testing Smoothstate", author: "author", description: "description", tags: ["tag1", "tag2", "tag3"] }
+- var items = [[{ link: '/' }], [{ link: 'index2.html', title: 'Brodyn' }], [{ link: 'index3.html', title: 'Chindlr' }], [{ link: 'index4.html', title: 'Cayen' }], [{ link: 'index5.html', title: 'Mauris' }], [{ link: 'index6.html', title: 'Deron' }], [{ link: 'index7.html', title: 'Canrad' }], [{ link: 'index8.html', title: 'Graesen' }], [{ link: 'index9.html', title: 'Cayeden' }], [{ link: 'index10.html', title: 'Braddy' }], [{ link: 'index11.html', title: 'Abril' }], [{ link: 'index12.html', title: 'Jaleah' }], [{ link: 'index13.html', title: 'Sofia' }], [{ link: 'index14.html', title: 'Emelisa' }], [{ link: 'index15.html', title: 'Jexica' }], [{ link: 'index16.html', title: 'Ellayina' }]]
+
+doctype html
+html(lang="de")
+    include includes/head.jade
+    
+    body
+        .m-scene#main
+            include includes/header.jade
+            .container
+                .vids
+                    - var i = 0
+                    each array in items
+                        a.video(href="#{array[0].link}").scene_element.scene_element--grow
+                            .content
+                                if (i < 10)
+                                    img(src="https://unsplash.it/50#{i++}" style="display: none;")
+                                else
+                                    img(src="https://unsplash.it/5#{i++}" style="display: none;")
+                                .vid-content
+                                    h2.title #{array[0].title}
+            // container end
+        // scene end
+    // body end
+// html end

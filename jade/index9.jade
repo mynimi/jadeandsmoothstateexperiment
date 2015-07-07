@@ -1,0 +1,25 @@
+- var page = { title: "Playground", subtitle: "Testing Smoothstate", author: "author", description: "description", tags: ["tag1", "tag2", "tag3"] }
+- var items = [[{ link: '/' }], [{ link: 'index2.html', title: 'Brodyn' }], [{ link: 'index3.html', title: 'Chindlr' }], [{ link: 'index4.html', title: 'Cayen' }], [{ link: 'index5.html', title: 'Mauris' }], [{ link: 'index6.html', title: 'Deron' }], [{ link: 'index7.html', title: 'Canrad' }], [{ link: 'index8.html', title: 'Graesen' }], [{ link: 'index9.html', title: 'Cayeden' }], [{ link: 'index10.html', title: 'Braddy' }], [{ link: 'index11.html', title: 'Abril' }], [{ link: 'index12.html', title: 'Jaleah' }], [{ link: 'index13.html', title: 'Sofia' }], [{ link: 'index14.html', title: 'Emelisa' }], [{ link: 'index15.html', title: 'Jexica' }], [{ link: 'index16.html', title: 'Ellayina' }]]
+- var pid = 9
+doctype html
+html(lang="de")
+    include includes/head.jade
+    
+    body
+        .m-scene#main
+            include includes/header.jade
+            .container
+                include includes/vids.jade
+            // container end
+            .overlay(id="overlay-#{pid}")
+                i.fa.fa-close.toggle
+                .container
+                    h1 Lorem Ipsum
+                    p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam autem sit suscipit repudiandae sint tenetur voluptates iste dolor nihil. Sit enim, sed totam voluptates nam eligendi ea vero odio dignissimos provident soluta veniam odit commodi tenetur repellat recusandae harum fugiat rem alias non neque asperiores. Doloribus at blanditiis deserunt, porro, inventore quaerat vero similique ad, ipsam iusto sequi quia qui accusamus. Ullam impedit dolorum rem, asperiores ipsam soluta inventore perferendis libero ex porro debitis corporis labore veniam cum fuga ab!
+                    
+                    p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro nulla et necessitatibus, a. Est, facilis. Harum vel cupiditate aperiam ea temporibus molestias iure, perspiciatis neque nostrum doloremque, reiciendis deserunt tenetur.
+                    
+                    p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem blanditiis culpa eos, nobis amet repellendus assumenda odio vitae exercitationem aperiam facilis, labore qui, soluta perferendis suscipit. Molestias quae magnam est obcaecati sapiente, ab iusto minima quod. Ex tempora molestiae ullam amet itaque eveniet officia aut earum error nostrum laboriosam officiis recusandae nesciunt perspiciatis, eligendi, aspernatur reprehenderit voluptatum quidem possimus vitae reiciendis a neque! Cum, explicabo.
+        // scene end
+    // body end
+// html end

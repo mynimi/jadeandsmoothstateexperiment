@@ -1,0 +1,283 @@
+header {
+    ul, li{
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+    // this will function as the navbar in the responsive view, that also holds the logo
+    .nav{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: $rtlalhb;
+        line-height: 1.5;
+        z-index: 99;
+
+        // centers logo and toggle link
+        @media screen and (max-width: $menu-collapse){
+            @include flexbox(row, wrap, center, center);
+        }
+    }
+
+    a{
+        color: $header_a_color;
+
+        &:hover{
+            color: $header_a_hover_color;
+        }
+    }
+
+    .logo{
+        display: inline-block;
+        line-height: 1;
+
+        // margin between toggle link and logo, when top menu is collapsed
+        @media screen and (max-width: $menu-collapse){
+            margin-left: 80px;
+        }
+
+        // hide this if top menu is not collapsed
+        @media screen and (min-width: $menu-collapse + 1){
+            display: none;
+        }
+
+        // max height of logo in responsive view, don't make this too high, because that bar is fixed
+        img{
+            max-height: 50px;
+            padding: 10px 0;
+        }
+    }
+
+    // toggle link styling
+    .toggle {
+        @extend a;
+        padding: 6px;
+
+        &:hover{
+            cursor: pointer;
+        }
+    }
+
+    .toggle-link-close {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    // hide main container toggle, if top menu is not collapsed
+    .toggle-link {
+        @media screen and (min-width: $menu-collapse + 1) {
+            display: none;
+        }
+    }
+
+    // hide off canvas toggle if top menu is collapsed
+    .toggle-link-off-canvas {
+        @media screen and (max-width: $menu-collapse) {
+            display: none;
+        }
+    }
+}
+
+.menu-container {
+    // if top menu is collapsed, this will act as the new off-canvas menu, so style it like the off-canvas menu here
+    @media screen and (max-width: $menu-collapse) {
+        z-index: 100;
+        position: fixed;
+        top: 0;
+        left: -300px;
+        height: 100%;
+        overflow-y: auto;
+        background: $off-canvas_bg;
+        width: 300px; // this width will fit within older iPhones (width: 320px)
+        box-sizing: border-box;
+        transition: .3s all ease;
+        transform: translate(0, 0);
+
+        &.active {
+            transform: translate(300px, 0);
+        }
+    }
+
+    a{
+        color: $off-canvas_a_color;
+
+        &:hover{
+            color: $off-canvas_a_hover_color;
+        }
+    }
+
+    // remove bullets from list elements
+
+    li{
+        list-style-type: none;
+        list-style: none;
+    }
+
+    // sub menu styles, are the same as with the off-canvas styling
+    .sub-menu {
+        border-top: $sub-menu_border;
+        border-bottom: $sub-menu_border;
+        background: $sub-menu_bg_off-canvas;
+        display: none;
+        z-index: 100;
+
+        // indent sub menu items 25px
+        li {
+            a {
+                box-sizing: border-box;
+                @media screen and (max-width: $menu-collapse) {
+                    padding-left: 25px;
+                }
+            }
+        }
+    }
+
+    // clickable triangle to toggle sub menu visibility
+    .parent {
+        @include flexbox(row, wrap, flex-start, center);
+
+        .submenu-opener {
+            font-size: 0;
+            position: relative;
+            width: 20px;
+            height: 20px;
+            transition: .6s all ease;
+
+            @media screen and (max-width: $menu-collapse) {
+                margin-left: 20px;
+            }
+
+            @media screen and (min-width: $menu-collapse + 1) {
+                margin-left: 5px;
+            }
+
+            &.sub-menu-is-open {
+                transform: rotate(-180deg);
+            }
+
+            &:after {
+                content: '';
+                @include triangle_eqla(10px, down, $off-canvas_a_color);
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -20%);
+                transition: .3s all ease;
+            }
+
+            &:hover {
+                cursor: pointer;
+
+                &:after {
+                    border-color: $off-canvas_a_hover_color transparent transparent transparent;
+                }
+            }
+        }
+    }
+}
+
+/* 4.3 Off-Canvas
+---------------------------------------------*/
+.off-canvas-menu {
+    line-height: 2.5;
+
+    // style off-canvas while top menu is not collapsed. Once top nav is collapsed, main container will act as off-canvas
+    @media screen and (min-width: $menu-collapse + 1) {
+        z-index: 100;
+        position: fixed;
+        top: 0;
+        left: -300px;
+        height: 100%;
+        overflow-y: auto;
+        background: $off-canvas_bg;
+        width: 300px;
+        box-sizing: border-box;
+        transition: .3s all ease;
+        transform: translate(0, 0);
+
+        &.active {
+            transform: translate(300px, 0);
+        }
+    }
+
+    a {
+        padding: 0 10px;
+    }
+}
+
+/* 4.4 Main Menu
+---------------------------------------------*/
+.main-menu {
+    z-index: 98;
+    
+    // top menu in collapsed state
+    @media screen and (max-width: $menu-collapse) {
+        border-top: $menu_separation_line;
+        line-height: 2.5;
+
+        a {
+            padding: 0 10px;
+        }
+    }
+
+    // top menu in open state
+    @media screen and (min-width: $menu-collapse + 1) {
+        height: 50px;
+        position: fixed;
+        width: 100%;
+        left: 0;
+        top: 0;
+        background: $main_menu_bg;
+        @include flexbox(row, wrap, space-between, center);
+
+        a{
+            color: $main_menu_a_color;
+
+            &:hover{
+                color: $main_menu_a_hover_color;
+            }
+        }
+
+        ul {
+            @include flexbox(row, wrap, flex-start, center);
+
+            li {
+                padding: 10px;
+            }
+        }
+
+        .sub-menu {
+            top: 100%;
+            position: absolute;
+            background: lighten($main_menu_bg, 5%);
+        }
+
+        // clickable triangle to toggle sub menu visibility
+        .parent .submenu-opener {
+            &:after {
+                border-color: $main_menu_a_color transparent transparent transparent;
+            }
+
+            &:hover {
+                &:after {
+                    border-color: $main_menu_a_hover_color transparent transparent transparent;
+                }
+            }
+        }
+    }
+
+    .logo{
+        display: inline-block;
+
+        @media screen and (max-width: $menu-collapse){
+            display: none;
+        }
+
+        // menu height for navigation when not collapsed
+        img{
+            max-height: 35px;
+        }
+    }
+}
