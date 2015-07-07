@@ -1,3 +1,5 @@
+- var urlbase = '/jadeandsmoothstateexperiment'
+
 head
     meta(charset='UTF-8')
     meta(http-equiv="expires", content="43200")     
@@ -12,5 +14,5 @@ head
     if page.tags
         meta(name="keywords", content="#{page.tags}")    
     include scripts.jade
-    link(rel='stylesheet', href='/css/main.css')
+    link(rel='stylesheet', href='#{urlbase}/css/main.css')
 // head end
